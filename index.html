@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>golst by gokyle</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>golst</h1>
+        <p>Produce readable source code listings for Go source files.</p>
+
+        <p class="view"><a href="https://github.com/gokyle/golst">View the Project on GitHub <small>gokyle/golst</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/gokyle/golst/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/gokyle/golst/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/gokyle/golst">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <p><code>golst</code> is a Go command line tool for generating readable program
+listings.  It was inspired by Luke Gorries' post 
+<a href="http://blog.lukego.com/blog/2012/10/24/readable-programs/">"Readable Programs"</a>
+and, in particular, his <code>pbook</code> example.</p>
+
+<p>Listings that are written to a file are written as .; for
+example, producing listings for <code>listing.go</code>:</p>
+
+<ul>
+<li>markdown -&gt; <code>listing.go.md</code>
+</li>
+<li>HTML -&gt; <code>listing.go.html</code>
+</li>
+<li>PDF -&gt; <code>listing.go.pdf</code>
+</li>
+</ul><h3>Examples</h3>
+
+<ul>
+<li>
+<p>To produce an HTML listing for <code>listing.go</code>:</p>
+
+<pre><code>golst -o html listing.go
+</code></pre>
+
+<p>This will produce <code>listing.go.html</code>, which is a standalone page. The
+template for this page is contained in the <code>html.go</code> source file, and
+is taken from one of my sites (<a href="http://tyrfingr.is">http://tyrfingr.is</a>).</p>
+</li>
+<li>
+<p>To produce a PDF listing for <code>pandoc.go</code>:</p>
+
+<pre><code>golst -o pdf pandoc.go
+</code></pre>
+
+<p>Similar to the previous example, this will produce the PDF file
+<code>pandoc.go.pdf</code>.</p>
+</li>
+<li>
+<p>To produce a markdown listing for <code>html.go</code> and have this printed
+to standard output:</p>
+
+<pre><code>golst html.go
+</code></pre>
+
+<p>Or, alternatively,</p>
+
+<pre><code>golst -o - html.go
+</code></pre>
+</li>
+<li>
+<p>You can produce listings for multiple files at the same time:</p>
+
+<pre><code>golst -o pdf *.go
+</code></pre>
+
+<p>If you ran this on the <code>golst</code> directory, you would have <code>listing.go.pdf</code>,
+<code>html.go.pdf</code>, and <code>pandoc.go.pdf</code>.</p>
+</li>
+</ul><h3>Supported Output Formats</h3>
+
+<p>Standalone listings are generated; the following formats (selected with
+the <code>-o</code> flag) are supported:</p>
+
+<ul>
+<li>html - generate HTML listing</li>
+<li>latex - uses <a href="http://www.johnmacfarlane.net/pandoc/">pandoc</a> to convert the
+markdown to a LaTeX listing.</li>
+<li>md - generate markdown listing</li>
+<li>pdf - uses <a href="http://www.johnmacfarlane.net/pandoc/">pandoc</a> to convert the
+markdown to a PDF listing.</li>
+<li>tex - rudimentary pure-Go TeX listing.</li>
+</ul><h3>Dependencies</h3>
+
+<ul>
+<li><p><code>golst</code> uses <a href="https://github.com/russross/blackfriday"><code>blackfriday</code></a>
+for producing HTML from the listing. This will automatically be pulled in
+by <code>go get</code>.</p></li>
+<li><p><code>pandoc</code> is required for conversion to PDF.</p></li>
+</ul><h3>License</h3>
+
+<p><code>golst</code> is released under an ISC license.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/gokyle">gokyle</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
